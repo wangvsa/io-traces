@@ -17,6 +17,12 @@
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Remark: With +nofbs, the problem size is spcificied in flash.par and FLASH can not use collective I/O.
 
+#### 3. [Sod 2D (AMR) with collective I/O](./reports/sod_2d_amr.html)
+* Setup command: `Sod -auto -2d +parallelio`
+* Problem size: adaptive mesh refinement (nxb=8, nxy=8)
+* MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Remark: By default (without -ug), FLASH uses adaptive mesh refinement.
+
 
 ### ENZO 
 
