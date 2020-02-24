@@ -45,10 +45,10 @@ key = romio_ds_read             value = automatic
 key = romio_ds_write            value = automatic 
 key = cb_config_list            value = *:1       
 key = romio_filesystem_type     value = LUSTRE:   
-key = romio_aggregator_list     value = 0 1 2 3 4 5 6 7 
+key = romio_aggregator_list     value = 0 8 16 24 32 40 48 56 
 key = striping_unit             value = 1048576   
 key = striping_factor           value = 1         
-key = romio_lustre_start_iodevice value = 0
+key = romio_lustre_start_iodevice value = 0         
 ```
 
 ### ENZO 
