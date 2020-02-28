@@ -17,7 +17,7 @@
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Remark: With +nofbs, the problem size is spcificied in flash.par and FLASH can not use collective I/O.
 
-#### 2.1 [Sod 2D with collective I/O](./reports/sod_2d_ug.html)
+#### 2.1 [Sod 2D with collective I/O](./reports/sod_2d_ug_stripe_count4.html)
 
 Same configuration as above but with Lustre stripe count set to 4.
 
