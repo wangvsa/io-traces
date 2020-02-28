@@ -71,7 +71,7 @@ key = romio_lustre_start_iodevice value = 0
 
 Same configuration as 2.1 except we deleted the `H5Fflush` call in `io_h5write_unknowns.c`.
 
-This file is used to write double precision multi-demensional variables (e.g., density, pressures) to HDF5 files.
+This file is used to write double precision multi-demensional variables (e.g., density, pressure) to HDF5 files.
 
 So it is used mostly for writing checkpoint files. In contrast, plot files by default keep variables in single precision, which uses the routine from `io_h5write_unknowns_sp.c`.
 
