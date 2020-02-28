@@ -73,11 +73,13 @@ Same configuration as 2.1 except we deleted the `H5Flush` call in `io_h5write_un
 
 This file is used to write double precision multi-demensional variables (e.g., density, pressures) to HDF5 files.
 
-So it is used mostly for writting checkpoint files. In contrast, plot files by default keep variables in single precision, which uses the routine from `io_h5write_unknowns_sp.c`.
+So it is used mostly for writing checkpoint files. In contrast, plot files by default keep variables in single precision, which uses the routine from `io_h5write_unknowns_sp.c`.
 
-The major difference between `io_h5write_unknowns` and `io_h5write_unknowns_sp` is that `io_h5write_unknowns` calls H5Fflush before closing the file.
+The major difference between `io_h5write_unknowns` and `io_h5write_unknowns_sp` is that `io_h5write_unknowns` calls `H5Fflush` before closing the file.
 
-H5Fflush if called enforces HDF5 library writes to the same offset of the file (supposedly the header) multiple times, which is the cause of WRITE-AFTER-WRITE pattern.
+`H5Fflush` if called enforces HDF5 library writes to the same offset of the file (supposedly the header) multiple times, which is the cause of WRITE-AFTER-WRITE pattern.
+
+So without the `H5Fflush` call, there will be no conflicting I/O operations. This one line modification makes FLASH possible to run on UnifyFS which does not support conflicting writes.
 
 
 
