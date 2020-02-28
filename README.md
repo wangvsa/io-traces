@@ -17,7 +17,7 @@
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Remark: With +nofbs, the problem size is spcificied in flash.par and FLASH can not use collective I/O.
 
-#### 2.1 [Sod 2D with collective I/O](./reports/sod_2d_ug_stripe_count4.html)
+#### 2.1 [Stripe count set to 4](./reports/sod_2d_ug_stripe_count4.html)
 
 Same configuration as above but with Lustre stripe count set to 4.
 
@@ -66,6 +66,19 @@ key = striping_unit             value = 1048576
 key = striping_factor           value = 4
 key = romio_lustre_start_iodevice value = 0
 ```
+
+#### 2.2. [Remove H5Flush from checkpointing routine](./reports/sod_2d_ug_stripe_count4_noh5flush.html)
+
+Same configuration as 2.1 except we deleted the `H5Flush` call in `io_h5write_unknowns.c`.
+
+This file is used to write double precision multi-demensional variables (e.g., density, pressures) to HDF5 files.
+
+So it is used mostly for writting checkpoint files. In contrast, plot files by default keep variables in single precision, which uses the routine from `io_h5write_unknowns_sp.c`.
+
+The major difference between `io_h5write_unknowns` and `io_h5write_unknowns_sp` is that `io_h5write_unknowns` calls H5Fflush before closing the file.
+
+H5Fflush if called enforces HDF5 library writes to the same offset of the file (supposedly the header) multiple times, which is the cause of WRITE-AFTER-WRITE pattern.
+
 
 
 #### 3. [Sod 2D (AMR) with collective I/O](./reports/sod_2d_amr.html)
