@@ -69,7 +69,7 @@ key = romio_lustre_start_iodevice value = 0
 
 #### 2.2. [Remove H5Fflush from the checkpointing routine](./reports/sod_2d_ug_stripe_count4_noh5flush.html)
 
-Same configuration as 2.1 except we deleted the `H5Flush` call in `io_h5write_unknowns.c`.
+Same configuration as 2.1 except we deleted the `H5Fflush` call in `io_h5write_unknowns.c`.
 
 This file is used to write double precision multi-demensional variables (e.g., density, pressures) to HDF5 files.
 
