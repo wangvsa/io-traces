@@ -6,6 +6,7 @@
 * Setup command: `Sod -auto -2d +ug +nofbs +parallelio`
 * Problem size: 512 x 512
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Remark: With +nofbs, the problem size is spcificied in flash.par and FLASH can not use collective I/O.
 
 #### 2. [Sod 2D with collective I/O](./reports/sod_2d_ug.html)
@@ -13,6 +14,7 @@
 * Setup command: `Sod -auto -2d +ug +parallelio -nxb=64 -nyb=64`
 * Problem size: 512 x 512
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Remark: This setup makes the problem scales with the number of processes used.
         Problem size: nxb * iProcs, nyb * jProcs.
         This configuration enables collective I/O.
@@ -88,6 +90,7 @@ So without the `H5Fflush` call, there will be no conflicting I/O operations. Thi
 * Setup command: `Sod -auto -2d +parallelio`
 * Problem size: adaptive mesh refinement (nxb=8, nxy=8)
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Remark: By default (without -ug), FLASH uses adaptive mesh refinement.
 
 ```bash
@@ -125,5 +128,18 @@ key = romio_lustre_start_iodevice value = 0
 Problem Size: 64 x 64 x 64
 
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Configuration file:
 * Remark: Each processor writes to its own checkpointing file (N-to-N pattern) using **serial HDF5**.
+
+
+### LAMMPS (7 Aug 2019)
+
+#### 1. [benchmark/lj](./reports/CollapseTestNonCosmological.html)
+
+Problem Size: 320 x 320 with 8,192,000 atoms
+
+* MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 4
+* Configuration file:
+* Remark: LAMMPS is configured to use MPI-IO to write out checkpoints. ROMIO hints are the same as others.
