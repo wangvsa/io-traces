@@ -67,7 +67,7 @@ key = striping_factor           value = 4
 key = romio_lustre_start_iodevice value = 0
 ```
 
-#### 2.2. [Remove H5Flush from checkpointing routine](./reports/sod_2d_ug_stripe_count4_noh5flush.html)
+#### 2.2. [Remove H5Fflush from the checkpointing routine](./reports/sod_2d_ug_stripe_count4_noh5flush.html)
 
 Same configuration as 2.1 except we deleted the `H5Flush` call in `io_h5write_unknowns.c`.
 
