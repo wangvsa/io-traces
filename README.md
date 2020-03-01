@@ -135,7 +135,7 @@ Problem Size: 64 x 64 x 64
 
 ### LAMMPS (7 Aug 2019)
 
-#### 1. [benchmark/lj](./reports/CollapseTestNonCosmological.html)
+#### 1. [benchmark/lj](./reports/lammps_lj_stripe_count4.html)
 
 Problem Size: 320 x 320 with 8,192,000 atoms
 
