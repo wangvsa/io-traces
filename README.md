@@ -143,3 +143,14 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 4
 * Configuration file:
 * Remark: LAMMPS is configured to use MPI-IO to write out checkpoints. ROMIO hints are the same as others.
+
+
+### QMCPACK 3.8.0
+
+#### 1. [example/H2O](./reports/)
+
+* MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Configuration file:
+* Remark: Parallel HDF5 is used.
+
