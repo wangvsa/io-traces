@@ -154,16 +154,16 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Configuration file:
 * Output files:
   Each section (computation, e.g. VMC, DMC) in input xml from top to bottom will be given a number,
-  so the output files for this section will have filenams in the format of TITLE.s000%d.xxx, e.g. H2O.s001.scalar.dat
-  * TITLE.s###.scalar.dat: block averages, e.g., LocalEnergy, LocalPotential, Kinetic, ElecElec
-  * TITLE.s###.dmc.dat : averages per DMC step
-  * TITLE.s###.stat.h5 : block avegrages in HDF5
-  * TITLE.s###.random.h5 : array values for restart
-  * TITLE.s###.config.h5 : configuration for restart
+  so the output files for this section will have filenams in the format of `TITLE.s000%d.xxx`, e.g., `H2O.s001.scalar.dat`
+  * `TITLE.s###.scalar.dat`: block averages, e.g., LocalEnergy, LocalPotential, Kinetic, ElecElec
+  * `TITLE.s###.dmc.dat`: averages per DMC step
+  * `TITLE.s###.stat.h5`: block avegrages in HDF5
+  * `TITLE.s###.random.h5`: array values for restart
+  * `TITLE.s###.config.h5`: configuration for restart
 * Remark: Parallel HDF5 is used. Each section has a fixed filename prefix, thus it overwrites the checkpoint files during one section's computation.
 * I/O patterns explaination:
-  * READ-AFTER-READ on H2O.HF.wfs.xml and simple-H2O.xml: both are input files. All ranks simply read all bytes of them using POSIX calls independently at beginning of the execution.
-  * WRITE-AFTER-WRITE on H2O.s001.qmc.xml and H2O.s002.qmc.xml: these two files are written only by rank 0 using POSIX calls. They kept some intermediate information like energy value and other parameters. Each I/O on them simply overwrites the entire file.
-  * WRITE-AFTER-WRITE on .stat.h5: This file is not used for checkpoint/restart, it stores the block averages. However, after each blocks computaiton (and writting out averages using several H5Dwrite), H5Fflush is called so the header part is overwritten.
-  * WRITE-AFTER-WRITE on .random.h5 and .config.h5: Both files are used for checkpoint/restart. And as each section has a fixed filename, so they are resued (entire file overwritten) at each checkpoint step.
+  * RAR on `H2O.HF.wfs.xml` and `simple-H2O.xml`: both are input files. All ranks simply read all bytes of them using POSIX calls independently at beginning of the execution.
+  * WAW on `.qmc.xml`: this file written only by rank 0 using POSIX calls. They kept some intermediate information like energy value and other parameters. Each I/O on them simply overwrites the entire file.
+  * WAW on `.stat.h5`: this file is not used for checkpoint/restart, it stores the block averages. However, after each blocks computaiton (and writting out averages using several H5Dwrite), H5Fflush is called so the header part is overwritten.
+  * WAW on `.random.h5` and `.config.h5`: both files are used for checkpoint/restart. And as each section has a fixed filename, so they are resued (entire file overwritten) at each checkpoint step.
 
