@@ -161,9 +161,9 @@ Problem Size: 320 x 320 with 8,192,000 atoms
   * `TITLE.s###.random.h5`: array values for restart
   * `TITLE.s###.config.h5`: configuration for restart
 * Remark: Parallel HDF5 is used. Each section has a fixed filename prefix, thus it overwrites the checkpoint files during one section's computation.
-* I/O patterns explaination:
-  * RAR on `H2O.HF.wfs.xml` and `simple-H2O.xml`: both are input files. All ranks simply read all bytes of them using POSIX calls independently at beginning of the execution.
-  * WAW on `.qmc.xml`: this file written only by rank 0 using POSIX calls. They kept some intermediate information like energy value and other parameters. Each I/O on them simply overwrites the entire file.
-  * WAW on `.stat.h5`: this file is not used for checkpoint/restart, it stores the block averages. However, after each blocks computaiton (and writting out averages using several H5Dwrite), H5Fflush is called so the header part is overwritten.
-  * WAW on `.random.h5` and `.config.h5`: both files are used for checkpoint/restart. And as each section has a fixed filename, so they are resued (entire file overwritten) at each checkpoint step.
+* I/O patterns explanation:
+  * **RAR** on `H2O.HF.wfs.xml` and `simple-H2O.xml`: both are input files. All ranks simply read all bytes of them using POSIX calls independently at beginning of the execution.
+  * **WAW** on `.qmc.xml`: this file written only by rank 0 using POSIX calls. They kept some intermediate information like energy value and other parameters. Each I/O on them simply overwrites the entire file.
+  * **WAW** on `.stat.h5`: this file is not used for checkpoint/restart, it stores the block averages. However, after each blocks computaiton (and writting out averages using several H5Dwrite), H5Fflush is called so the header part is overwritten.
+  * **WAW** on `.random.h5` and `.config.h5`: both files are used for checkpoint/restart. And as each section has a fixed filename, so they are resued (entire file overwritten) at each checkpoint step.
 
