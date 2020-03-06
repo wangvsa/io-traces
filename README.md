@@ -160,7 +160,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Configuration file:
 * Output files:
   Each section (computation, e.g. VMC, DMC) in input xml from top to bottom will be given a number,
-  so the output files for this section will have filenams in the format of `TITLE.s000%d.xxx`, e.g., `H2O.s001.scalar.dat`
+  so the output files for this section will have filenames in the format of `TITLE.s00%d.xxx`, e.g., `H2O.s001.scalar.dat`
   * `TITLE.s###.scalar.dat`: block averages, e.g., LocalEnergy, LocalPotential, Kinetic, ElecElec
   * `TITLE.s###.dmc.dat`: averages per DMC step
   * `TITLE.s###.stat.h5`: block avegrages in HDF5
