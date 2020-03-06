@@ -135,7 +135,7 @@ Problem Size: 64 x 64 x 64
 
 ### LAMMPS (7 Aug 2019)
 
-#### 1. [benchmark/lj](./reports/lammps_lj_stripe_count4.html)
+#### 1. [benchmark/lj](./reports/lammps_lj_stripe_count4_ibrun.html)
 
 Problem Size: 320 x 320 with 8,192,000 atoms
 
@@ -143,6 +143,10 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 4
 * Configuration file:
 * Remark: LAMMPS is configured to use MPI-IO to write out checkpoints. ROMIO hints are the same as others.
+          One interesting thing is that if running with **mpirun** (instead of ibrun), ROMIO can not detect the underlying
+          filesystem as LUSTRE (still NFS). And other hints such as `cb_nodes` and `striping factor` seem to have no effect.
+          No collective I/O is used. Check the [report](./reports/lammps_lj_stripe_count4_mpirun.html) using mpirun here.
+
 
 
 ### QMCPACK 3.8.0
