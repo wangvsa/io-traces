@@ -148,6 +148,11 @@ Problem Size: 320 x 320 with 8,192,000 atoms
           One interesting thing is that if running with **mpirun** (instead of ibrun), ROMIO can not detect the underlying
           filesystem as LUSTRE (still NFS). And other hints such as `cb_nodes` and `striping factor` seem to have no effect.
           No collective I/O is used. Check the [report](./reports/lammps_lj_stripe_count4_mpirun.html) using mpirun here.
+	  
+  * Update on this: The Intel MPI library uses ROMIO, but configures the file-system specific drivers a bit differently.   MPICH selects which file system drivers to support at **compile-time** with the –with-file-system configure flag.  These selected drivers are compiled directly into the MPICH library.  Intel-MPI builds its file-system drivers as loadable modules, and relies on two environment variables to enable and select the drivers.
+  
+    Example: mpiexec -env I_MPI_EXTRA_FILESYSTEM on -env I_MPI_EXTRA_FILESYSTEM_LIST lustre -n 2 ./test
+
 
 
 
