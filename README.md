@@ -78,7 +78,7 @@ This file is used to write double precision multi-demensional variables (e.g., d
 So it is used mostly for writing checkpoint files. In contrast, plot files by default keep variables in single precision, which uses the routine from `io_h5write_unknowns_sp.c`.
 
 The major difference between `io_h5write_unknowns` and `io_h5write_unknowns_sp` is that `io_h5write_unknowns` calls `H5Fflush` before closing the file. 
-FLASH calls `io_h5write_unknows` (which calls `H5Fflush`) n times to write n variables.
+**FLASH calls `io_h5write_unknows` (which calls `H5Fflush`) n times to write n variables.**
 
 `H5Fflush` enforces HDF5 library to flush the dirty metadata. So every time it is called, it writes to the same part of the file.
 This explains why I/O on plot files have no conflicting behaviours but I/O on checkpoint files have WRITE-AFTER-WRITE patterns.
