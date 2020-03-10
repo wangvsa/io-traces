@@ -158,7 +158,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ### QMCPACK 3.8.0
 
-#### 1. [example/H2O](./reports/qmcpack_h2o.html)
+#### 1. [example/H2O](./reports/qmcpack_h2o_stripe_count1.html)
 
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
@@ -178,6 +178,6 @@ Problem Size: 320 x 320 with 8,192,000 atoms
   * **WAW** on `.qmc.xml`: this file written only by rank 0 using POSIX calls. They kept some intermediate information like energy value and other parameters. Each I/O on them simply overwrites the entire file.
   * **WAW** on `.random.h5` and `.config.h5`: By default, without HDF5 collective metadata flush, multiple processes may each write a portion of the dirty metadata to the file.
                                               So at each checkpoint step, the same rank may overwrite previous metadata and raw data (because it reuses the same checkpoint file during one section).
-* Here's the [report](./reports/qmcpack_h2o.html) for stripe count = 4, however, it seems that still rank 0 performs most of the I/O operations, no idea why.
+* Here's the [report](./reports/qmcpack_h2o_stripe_count4.html) for stripe count = 4, however, it seems that still rank 0 performs most of the I/O operations, no idea why.
   
 
