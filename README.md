@@ -190,5 +190,5 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Compiler & Libraries: intel/19.1.0, impi/2018.0, Silo-4.10.2-bsd, HDF5-1.8.20
 * Command: `mpirun -np 64 ../macsio --interface silo --avg_num_parts 1 --part_size 100K --part_type unstructured --part_dim 3 --vars_per_part 50 --parallel_file_mode MIF 8`
-* Output logs: [macsio-log.log](./reports/Ale3d/macsio-log.log) [macsio-timings.log](./reports/Ale3d/macsio-timings.log)
+* Output logs: [macsio-log.log](./reports/Ale3d/macsio-log.txt) [macsio-timings.log](./reports/Ale3d/macsio-timings.txt)
 
