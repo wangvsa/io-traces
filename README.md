@@ -183,12 +183,12 @@ Problem Size: 320 x 320 with 8,192,000 atoms
   
 ### MACSio 
 
-#### 1. [Ale3D](./reports/ale3d_8x8ranks.html)
+#### 1. [Ale3D](./reports/Ale3d/ale3d_8x8ranks.html)
 
 * System: Quartz at LLNL
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
-* Libraries: Silo-4.10.2-bsd, HDF5-1.8.20
+* Compiler & Libraries: intel/19.1.0, impi/2018.0, Silo-4.10.2-bsd, HDF5-1.8.20
 * Command: `mpirun -np 64 ../macsio --interface silo --avg_num_parts 1 --part_size 100K --part_type unstructured --part_dim 3 --vars_per_part 50 --parallel_file_mode MIF 8`
-* Output logs: [macsio-log.log] [macsio-timings.log]
+* Output logs: [macsio-log.log](./reports/Ale3d/macsio-log.log) [macsio-timings.log](./reports/Ale3d/macsio-timings.log)
 
