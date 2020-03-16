@@ -180,4 +180,15 @@ Problem Size: 320 x 320 with 8,192,000 atoms
                                               So at each checkpoint step, the same rank may overwrite previous metadata and raw data (because it reuses the same checkpoint file during one section).
 * Here's the [report](./reports/qmcpack_h2o_stripe_count4.html) for stripe count = 4, however, it seems that still rank 0 performs most of the I/O operations, no idea why.
   
+  
+### MACSio 
+
+#### 1. [Ale3D](./reports/ale3d_8x8ranks.html)
+
+* System: Quartz at LLNL
+* MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Libraries: Silo-4.10.2-bsd, HDF5-1.8.20
+* Command: `mpirun -np 64 ../macsio --interface silo --avg_num_parts 1 --part_size 100K --part_type unstructured --part_dim 3 --vars_per_part 50 --parallel_file_mode MIF 8`
+* Output logs: [macsio-log.log] [macsio-timings.log]
 
