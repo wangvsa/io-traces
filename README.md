@@ -3,6 +3,7 @@
 
 #### 1. [Sod 2D without collective I/O](./reports/sod_2d_nofbs.html)
 
+* System: Stampede2 at TACC
 * Setup command: `Sod -auto -2d +ug +nofbs +parallelio`
 * Problem size: 512 x 512
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
@@ -129,6 +130,7 @@ key = romio_lustre_start_iodevice value = 0
 
 Problem Size: 64 x 64 x 64
 
+* System: Stampede2 at TACC
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Configuration file:
@@ -141,6 +143,7 @@ Problem Size: 64 x 64 x 64
 
 Problem Size: 320 x 320 with 8,192,000 atoms
 
+* System: Stampede2 at TACC
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 4
 * Configuration file:
@@ -152,6 +155,16 @@ Problem Size: 320 x 320 with 8,192,000 atoms
   * Update on this: The Intel MPI library uses ROMIO, but configures the file-system specific drivers a bit differently.   MPICH selects which file system drivers to support at **compile-time** with the –with-file-system configure flag.  These selected drivers are compiled directly into the MPICH library.  Intel-MPI builds its file-system drivers as loadable modules, and relies on two environment variables to enable and select the drivers.
   
     Example: mpiexec -env I_MPI_EXTRA_FILESYSTEM on -env I_MPI_EXTRA_FILESYSTEM_LIST lustre -n 2 ./test
+
+### LAMMPS (3 Mar 2020)
+
+#### 1.
+
+* System: Quartz at LLNL
+* MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Compiler & Libraries: intel/19.1.0, impi/2018.0, HDF5-1.12.20, ADIOS2
+* Note: compiled with mpiio, hdf5, adios, h5md
 
 
 
@@ -191,4 +204,18 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Compiler & Libraries: intel/19.1.0, impi/2018.0, Silo-4.10.2-bsd, HDF5-1.8.20
 * Command: `mpirun -np 64 ../macsio --interface silo --avg_num_parts 1 --part_size 100K --part_type unstructured --part_dim 3 --vars_per_part 50 --parallel_file_mode MIF 8`
 * Output logs: [macsio-log.log](./reports/Ale3d/macsio-log.txt) [macsio-timings.log](./reports/Ale3d/macsio-timings.txt)
+* I/O Patterns:
+ * same rank: READ-AFTER-READ, WRITE-AFTER-WRITE
+ * different rank: READ-AFTER-READ, READ-AFTER-WRITE, WRITE-AFTER-WRITE
+* Explaination:
+    This emulation(due to silo) produces 8 files per dump step (total of 10 dump steps).
+    64 MPI ranks are divided into 8 sub-groups, where each group writes to one file.
+    For example, rank 0~7 writes to file macsio\_silo\_00000\_000,silo, ..., macsio\_silo\_00000\_009.silo
 
+    Each process in a sub-group is responsible of writting a portion of the file.
+    The attribute **nlinks** is used to construct an unique name for the dataset for writing.
+    Before writing to the next dataset, the process will read back **nlink**, increase it by one and then use it to name the dataset.
+
+    The file is written by one process at a time (See offset-vs-rank and offset-vs-time plots). Open->write->close.
+    The **nlink** attribute shows RAR, RAW and WAR on different ranks as the next process has to reopen the file.
+    Note that there is no WAW because the attribute is only flushed once the file is closed.
