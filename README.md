@@ -205,7 +205,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Command: `mpirun -np 64 ../macsio --interface silo --avg_num_parts 1 --part_size 100K --part_type unstructured --part_dim 3 --vars_per_part 50 --parallel_file_mode MIF 8`
 * Output logs: [macsio-log.log](./reports/Ale3d/macsio-log.txt) [macsio-timings.log](./reports/Ale3d/macsio-timings.txt)
 * I/O Patterns:
-  * same rank: READ-AFTER-READ, WRITE-AFTER-WRITE
+  * same rank: READ-AFTER-READ, WRITE-AFTER-READ
   * different rank: READ-AFTER-READ, READ-AFTER-WRITE, WRITE-AFTER-WRITE
 * Explaination:
     This emulation(due to silo) produces 8 files per dump step (total of 10 dump steps).
