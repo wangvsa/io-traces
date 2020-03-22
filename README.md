@@ -238,10 +238,21 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ### ParaDis 2.5.1.1
 
-#### [report](./reports/vasp_4x1ranks.html)
+#### [report]()
 
 * System: Quartz at LLNL
 * MPI: 4 MPI Processes - 4 nodes and 1 MPI rank per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Compiler & Libraries: intel/19.1.0 impi/2018.0, hdf5 1.8.20
 * Note: This code is very old, it uses HDF5 1.6 apis. Made some change to compile it with HDF5 1.8
+
+
+### NWchem 6.8.1
+
+#### [report]()
+
+* System: Quartz at LLNL
+* MPI: 4 MPI Processes - 4 nodes and 1 MPI rank per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Compiler & Libraries: intel/19.1.0 impi/2018.0
+* Note: NWchem does not use any I/O library.
