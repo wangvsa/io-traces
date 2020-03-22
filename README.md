@@ -222,3 +222,15 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
     WAR on same rank is caused by `H5Gget_objinfo`. Rank 0 writes group information then later Rank 1 reads it.
     On close, Rank 1 writes this information again.
+
+
+
+### VASP
+
+#### [report](./reports/vasp_4x1ranks.html)
+
+* System: Quartz at LLNL
+* MPI: 4 MPI Processes - 4 nodes and 1 MPI rank per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Compiler & Libraries: intel/18.0.1, mvapich2-2.2
+* Note: No MPI-I/O, No I/O libraries.
