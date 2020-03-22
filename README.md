@@ -245,11 +245,12 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * MPI: 4 MPI Processes - 4 nodes and 1 MPI rank per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Compiler & Libraries: intel/19.1.0 impi/2018.0, hdf5 1.8.20
+* Configuration: run 1000 steps, dump plot files, restart files, velocity files every 500 steps. [input file](./reports/ParaDis/Copper.ctrl)
 * Note: This code is very old, it uses HDF5 1.6 API. Have to make some changes to compile it with HDF5 1.8.
        HDF5 is only used to write/read restart files. All other files are in ASCII format.
 
-#### 1. [Without HDF5](./reports/paradis_copper_ascii-restart.html)
-#### 1. [With HDF5](./reports/paradis_copper_hdf5-restart.html)
+#### 1. [Without HDF5](./reports/ParaDis/paradis_copper_ascii-restart.html)
+#### 1. [With HDF5](./reports/ParaDis/paradis_copper_hdf5-restart.html)
 
 
 
