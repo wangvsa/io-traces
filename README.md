@@ -243,7 +243,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 #### 1. Copper
 * System: Quartz at LLNL
-* MPI: 4 MPI Processes - 4 nodes and 1 MPI rank per node
+* MPI: 4 MPI Processes - 4 nodes and 2 MPI ranks per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Compiler & Libraries: intel/19.1.0 impi/2018.0, hdf5 1.8.20
 * Configuration: run 1000 steps, dump plot files, restart files, velocity files every 500 steps. [input file](./reports/ParaDis/Copper.ctrl)
@@ -260,10 +260,12 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ### NWchem 6.8.1
 
-#### [report]()
+#### [report](./reports/NWchem/h2o_resonant.html)
 
 * System: Quartz at LLNL
-* MPI: 4 MPI Processes - 4 nodes and 1 MPI rank per node
+* MPI: 4 MPI Processes - 4 nodes and 2 MPI ranks per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Compiler & Libraries: intel/19.1.0 impi/2018.0
+* Configuration: tmax=5.0, dt=0.2, in total of 5 checkpoints ([input file](./reports/NWchem/RT_TDDFT_h2o_resonant.nw)).
 * Note: NWchem does not use any I/O library.
+
