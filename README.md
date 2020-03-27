@@ -264,3 +264,16 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Configuration: tmax=5.0, dt=0.2, in total of 5 checkpoints ([input file](./reports/NWchem/RT_TDDFT_h2o_resonant.nw)).
 * Note: NWchem does not use any I/O library.
 
+
+### pF3D I/O Emulator
+
+#### [report](./reports/pF3D/pf3d_8x8ranks.html)
+
+* System: Quartz at LLNL
+* MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Compiler & Libraries: intel/18.0.1, mvapich2-2.2
+* Configuration: [mpio2.i](./reports/pF3D/mpio2.i).
+* Note:  No I/O library used. Also did not see any MPI_File_\* functions
+
+
