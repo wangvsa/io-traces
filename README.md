@@ -231,6 +231,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
 * Compiler & Libraries: intel/18.0.1, mvapich2-2.2
 * Note: No MPI-I/O, No I/O libraries.
+* I/O Patterns: only have read-after-read patterns.
 
 
 ### ParaDis 2.5.1.1
