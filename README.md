@@ -251,9 +251,9 @@ Problem Size: 320 x 320 with 8,192,000 atoms
        HDF5 is only used to write/read restart files. All other files are in ASCII format.
 * reports:
   * [Without HDF5](./reports/ParaDis/paradis_copper_ascii-restart.html):
-    Write all files in ASCII format. Only uses fprintf for I/O. *TODO: rank 0 writes and closes --> then rank 1 appends; In this case, offset-vs-rank plots are wrong*
+    Write all files in ASCII format. Uses open(append mode) + fprintf for I/O. No conflicting patterns.
   * [With HDF5](./reports/ParaDis/paradis_copper_hdf5-restart.html):
-    Use HDF5 to write restart files.
+    Use HDF5 to write restart files. Have conflicting patterns on same rank due to HDF5 metadata operations.
 
 
 
