@@ -191,8 +191,8 @@ Problem Size: 320 x 320 with 8,192,000 atoms
           Since we set stripe count to 1 and the ROMIO hints `romio_lustre_co_ratio` by default is also 1, we have only one aggregator doing all the I/O - even though we have 8 aggregators (one aggregator per node).
 * I/O patterns explanation:
   * **RAR** on `H2O.HF.wfs.xml` and `simple-H2O.xml`: both are input files. All ranks simply read all bytes of them using POSIX calls independently at beginning of the execution.
-  * **WAW** on `.qmc.xml`: this file written only by rank 0 using POSIX calls. They kept some intermediate information like energy value and other parameters. Each I/O on them simply overwrites the entire file.
-  * **WAW** on `.random.h5` and `.config.h5`: By default, without HDF5 collective metadata flush, multiple processes may each write a portion of the dirty metadata to the file.
+  * **Overlapping WAW** on `.qmc.xml`: this file written only by rank 0 using POSIX calls. They kept some intermediate information like energy value and other parameters. Each I/O on them simply overwrites the entire file.
+  * **Overlapping WAW** on `.random.h5` and `.config.h5`: By default, without HDF5 collective metadata flush, multiple processes may each write a portion of the dirty metadata to the file.
                                               So at each checkpoint step, the same rank may overwrite previous metadata and raw data (because it reuses the same checkpoint file during one section).
 * Here's the [report](./reports/qmcpack_h2o_stripe_count4.html) for stripe count = 4, however, it seems that still rank 0 performs most of the I/O operations, no idea why.
   
