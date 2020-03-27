@@ -208,8 +208,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Command: `mpirun -np 64 ../macsio --interface silo --avg_num_parts 1 --part_size 100K --part_type unstructured --part_dim 3 --vars_per_part 50 --parallel_file_mode MIF 8`
 * Output logs: [macsio-log.log](./reports/Ale3d/macsio-log.txt) [macsio-timings.log](./reports/Ale3d/macsio-timings.txt)
 * I/O Patterns:
-  * same rank: READ-AFTER-READ, WRITE-AFTER-READ
-  * different rank: READ-AFTER-READ, READ-AFTER-WRITE, WRITE-AFTER-WRITE
+    Have conflicting patterns (RAR and WAR, same as ParaDis with HDF5) on same rank due to HDF5 metadata operations.
 * Explaination:
     This emulation(due to silo) produces 8 files per dump step (total of 10 dump steps).
     64 MPI ranks are divided into 8 sub-groups, where each group writes to one file.
@@ -253,7 +252,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
   * [Without HDF5](./reports/ParaDis/paradis_copper_ascii-restart.html):
     Write all files in ASCII format. Uses open(append mode) + fprintf for I/O. No conflicting patterns.
   * [With HDF5](./reports/ParaDis/paradis_copper_hdf5-restart.html):
-    Use HDF5 to write restart files. Have conflicting patterns on same rank due to HDF5 metadata operations.
+    Use HDF5 to write restart files. Have conflicting patterns (RAR and WAR, same as Ale3D) on same rank due to HDF5 metadata operations.
 
 
 
