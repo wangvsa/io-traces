@@ -218,13 +218,8 @@ Problem Size: 320 x 320 with 8,192,000 atoms
     The attribute **nlinks** is used to construct an unique name for the dataset for writing.
     Before writing to the next dataset, the process will read back **nlink**, increase it by one and then use it to name the dataset.
 
-    The file is written by one process at a time (See offset-vs-rank and offset-vs-time plots). Open->write->close.
-    The **nlink** attribute shows RAR, RAW and WAR on different ranks as the next process has to reopen the file.
-    Note that there is no WAW because the attribute is only flushed once the file is closed.
-
-    WAR on same rank is caused by `H5Gget_objinfo`. Rank 0 writes group information then later Rank 1 reads it.
-    On close, Rank 1 writes this information again.
-
+    The file is written by one process at a time (See offset-vs-rank and offset-vs-time plots), i.e, Rank 0: Open->write->close, then Rank 1: Open->write->close.
+    So the **nlink** contributes to the RAR and WAR on same rank but no on different ranks.
 
 
 ### VASP
