@@ -278,11 +278,11 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ### LBANN
 
-#### [autoencoder_mnist](./reports/pF3D/pf3d_8x8ranks.html)
+#### [autoencoder_cifar10](./reports/lbann/autoencoder_cifar10_4x2.html)
 
 * System: Quartz at LLNL
 * MPI: 8 MPI Processes - 4 nodes and 2 MPI ranks per node
 * Filesystem: Lustre, stripe size: 1MB, stripe count: 1
-* Compiler & Libraries: gcc/18, mvapich2-2.3
-* Configuration: [mpio2.i](./reports/pF3D/mpio2.i).
+* Compiler & Libraries: gcc/7.3.0, mvapich2-2.3
+* Configuration: --num-epochs=2
 
