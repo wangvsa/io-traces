@@ -286,3 +286,14 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Compiler & Libraries: gcc/7.3.0, mvapich2-2.3
 * Configuration: --num-epochs=2
 
+
+### Nek5000 
+
+#### [Eddy_uv](./reports/nek5000_eddy_uv_4x4.html)
+
+* System: Quartz at LLNL
+* MPI: 8 MPI Processes - 4 nodes and 4 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Compiler & Libraries: intel/18.0.1, mvapich2-2.2
+* Configuration: eddy_uv example
+
