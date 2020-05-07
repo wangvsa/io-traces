@@ -297,3 +297,15 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Compiler & Libraries: intel/19.1.0 impi/2018.0
 * Configuration: eddy_uv example
 
+
+### GTCv0.92 
+
+#### [64p](./reports/GTC/gtc_64p_4x2.html)
+
+* System: Quartz at LLNL
+* MPI: 8 MPI Processes - 4 nodes and 2 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Compiler & Libraries: intel/19.1.0 impi/2018.0, hdf5-1.12.0
+* Configuration: [gtc.input.64p](./reports/GTC/gtc.input.64p)
+* Remarks: No I/O except reading the input file by rank 0.
+
