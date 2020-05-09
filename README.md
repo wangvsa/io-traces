@@ -309,3 +309,14 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Configuration: [gtc.input.64p](./reports/GTC/gtc.input.64p)
 * Remarks: No I/O except reading the input file by rank 0.
 
+
+### GAMESS
+
+#### [dft-etoh](./reports/GAMESS/dft_etoh_4x4.hthml)
+
+* System: Quartz at LLNL
+* MPI: 16 MPI Processes - 4 nodes and 4 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
+* Compiler & Libraries: intel/19.1.0 impi/2018.0
+* Configuration: [dft-etoh.inp](./reports/GAMESS/dft_etoh.inp)
+
