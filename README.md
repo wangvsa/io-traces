@@ -320,3 +320,14 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Compiler & Libraries: intel/19.1.0 impi/2018.0
 * Configuration: [dft-etoh.inp](./reports/GAMESS/dft_etoh.inp)
 
+
+### Chombo-3.2.7
+
+#### [AMRPoisson/execVariableCoefficient 3D](./reports/Chombo/AMRPoisson/AMRPoisson_3d_4x2.html)
+
+* System: Quartz at LLNL
+* MPI: 8 MPI Processes - 4 nodes and 2 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 4
+* Compiler & Libraries: gfortran/4.9, g++/4.9 impi/2018.0
+* Configuration: [inputs](./reports/Chombo/AMRPoisson/inputs)
+
