@@ -181,7 +181,8 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ##### 3. Dump with netcdf
 * Dump command: dump 3 all netcdf 20 dump.*.nc id type x y z
-* report
+* [report](./reports/LAMMPS/in.flow.pois/dump_with_netcdf_4x4.html)
+* Conflicts: WAW-S on all .nc files
 
 ##### 4. Dump with mpi-io
 * Dump command: dump 4 all custom/mpiio 20 dump.*.mpiio id type x y z
@@ -190,6 +191,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 ##### 5. Dump with ADIOS
 * Dump command: #dump 5 all custom/adios 20 dump.*.bp id type x y z
 * [report](./reports/LAMMPS/in.flow.pois/dump_with_adios_4x4.html)
+* Conflicts: WAW-S on all md.idx files
 
 
 
