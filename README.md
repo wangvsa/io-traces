@@ -142,7 +142,7 @@ Problem Size: 64 x 64 x 64
 
 ### LAMMPS (7 Aug 2019)
 
-#### 1. [benchmark/lj](./reports/lammps_lj_stripe_count4_ibrun.html)
+#### 1. [benchmark/lj](./reports/LAMMPS/lammps_lj_stripe_count4_ibrun.html)
 
 Problem Size: 320 x 320 with 8,192,000 atoms
 
@@ -153,7 +153,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Remark: LAMMPS is configured to use MPI-IO to write out checkpoints. ROMIO hints are the same as others.
           One interesting thing is that if running with **mpirun** (instead of ibrun), ROMIO can not detect the underlying
           filesystem as LUSTRE (still NFS). And other hints such as `cb_nodes` and `striping factor` seem to have no effect.
-          No collective I/O is used. Check the [report](./reports/lammps_lj_stripe_count4_mpirun.html) using mpirun here.
+          No collective I/O is used. Check the [report](./reports/LAMMPS/lammps_lj_stripe_count4_mpirun.html) using mpirun here.
 	  
   * Update on this: The Intel MPI library uses ROMIO, but configures the file-system specific drivers a bit differently.   MPICH selects which file system drivers to support at **compile-time** with the –with-file-system configure flag.  These selected drivers are compiled directly into the MPICH library.  Intel-MPI builds its file-system drivers as loadable modules, and relies on two environment variables to enable and select the drivers.
   
@@ -173,7 +173,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 ##### 1. Dump with hdf5
 * Dump command: dump 1 all h5md 20 dump_h5md.h5 position force species velocity
 * Check the [doc](https://lammps.sandia.gov/doc/dump_h5md.html) here. This command can only dump one hdf5 file.
-* report
+* [report](./reports/LAMMPS/in.flow.pois/dump_with_h5md_4x4.html)
 
 ##### 1. Dump with POISX
 * Dump command: dump 2 all custom 20 dump.*.txt id type x y z
@@ -190,7 +190,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ##### 2. Dump with ADIOS
 * Dump command: #dump 5 all custom/adios 20 dump.*.bp id type x y z
-* report
+* [report](./reports/LAMMPS/in.flow.pois/dump_with_adios_4x4.html)
 
 
 
