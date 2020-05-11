@@ -175,20 +175,19 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Check the [doc](https://lammps.sandia.gov/doc/dump_h5md.html) here. This command can only dump one hdf5 file.
 * [report](./reports/LAMMPS/in.flow.pois/dump_with_h5md_4x4.html)
 
-##### 1. Dump with POISX
+##### 2. Dump with POISX
 * Dump command: dump 2 all custom 20 dump.*.txt id type x y z
 * report
 
-##### 1. Dump with netcdf
+##### 3. Dump with netcdf
 * Dump command: dump 3 all netcdf 20 dump.*.nc id type x y z
 * report
 
-
-##### 2. Dump with mpi-io
+##### 4. Dump with mpi-io
 * Dump command: dump 4 all custom/mpiio 20 dump.*.mpiio id type x y z
-* report
+* [report](./reports/LAMMPS/in.flow.pois/dump_with_mpiio_4x4.html)
 
-##### 2. Dump with ADIOS
+##### 5. Dump with ADIOS
 * Dump command: #dump 5 all custom/adios 20 dump.*.bp id type x y z
 * [report](./reports/LAMMPS/in.flow.pois/dump_with_adios_4x4.html)
 
