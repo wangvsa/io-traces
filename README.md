@@ -174,24 +174,28 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Dump command: dump 1 all h5md 20 dump_h5md.h5 position force species velocity
 * Check the [doc](https://lammps.sandia.gov/doc/dump_h5md.html) here. This command can only dump one hdf5 file.
 * [report](./reports/LAMMPS/in.flow.pois/dump_with_h5md_4x4.html)
+* No conflicts
 
 ##### 2. Dump with POISX
 * Dump command: dump 2 all custom 20 dump.*.txt id type x y z
 * report
+* No conflicts
 
 ##### 3. Dump with netcdf
 * Dump command: dump 3 all netcdf 20 dump.*.nc id type x y z
 * [report](./reports/LAMMPS/in.flow.pois/dump_with_netcdf_4x4.html)
-* Conflicts: WAW-S on all .nc files
+* Conflicts: WAW-S on all *.nc files
 
 ##### 4. Dump with mpi-io
 * Dump command: dump 4 all custom/mpiio 20 dump.*.mpiio id type x y z
 * [report](./reports/LAMMPS/in.flow.pois/dump_with_mpiio_4x4.html)
+* No conlifcts
 
 ##### 5. Dump with ADIOS
 * Dump command: #dump 5 all custom/adios 20 dump.*.bp id type x y z
 * [report](./reports/LAMMPS/in.flow.pois/dump_with_adios_4x4.html)
-* Conflicts: WAW-S on all md.idx files
+* Note: ADIOS engine is BP4; We use 4 substreams as the file system stripe count is 4; All other parameters are kept deafult.
+* Conflicts: WAW-S on all dump.*.bp/md.idx files
 
 
 
