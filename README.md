@@ -178,8 +178,8 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ##### 2. Dump with POISX
 * Dump command: dump 2 all custom 20 dump.*.txt id type x y z
-* report
-* No conflicts
+* [report](./reports/LAMMPS/in.flow.pois/dump_with_posix_4x4.html)
+* No conflicts; Rank 0 writes everything.
 
 ##### 3. Dump with netcdf
 * Dump command: dump 3 all netcdf 20 dump.*.nc id type x y z
