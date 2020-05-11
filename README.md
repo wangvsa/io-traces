@@ -161,14 +161,36 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ### LAMMPS (3 Mar 2020)
 
-#### 1.
+#### 2D LJ flow simulation (in.flow.pois)
 
 * System: Quartz at LLNL
-* MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
-* Filesystem: Lustre, stripe size: 1MB, stripe count: 1
-* Compiler & Libraries: intel/19.1.0, impi/2018.0, HDF5-1.12.20, ADIOS2
-* Note: compiled with mpiio, hdf5, adios, h5md
+* MPI: 16 MPI Processes - 4 nodes and 4 MPI ranks per node
+* Filesystem: Lustre, stripe size: 1MB, stripe count: 4
+* Compiler & Libraries: intel/19.1.0, impi/2018.0, ADIOS2(HDF5-1.12.20), h5md(HDF5-1.8), netcdf-4.3.3
+* Note: compiled two versions as ADIOS requires hdf5-1.12 but h5md can not work with hdf-1.12.
 
+
+##### 1. Dump with hdf5
+* Dump command: dump 1 all h5md 20 dump_h5md.h5 position force species velocity
+* Check the [doc](https://lammps.sandia.gov/doc/dump_h5md.html) here. This command can only dump one hdf5 file.
+* report
+
+##### 1. Dump with POISX
+* Dump command: dump 2 all custom 20 dump.*.txt id type x y z
+* report
+
+##### 1. Dump with netcdf
+* Dump command: dump 3 all netcdf 20 dump.*.nc id type x y z
+* report
+
+
+##### 2. Dump with mpi-io
+* Dump command: dump 4 all custom/mpiio 20 dump.*.mpiio id type x y z
+* report
+
+##### 2. Dump with ADIOS
+* Dump command: #dump 5 all custom/adios 20 dump.*.bp id type x y z
+* report
 
 
 
