@@ -198,6 +198,12 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * Conflicts: WAW-S on all dump.*.bp/md.idx files
 
 
+##### 6. Restart mpi-io
+* Command: restart 20 poly.restart.mpiio
+* Note: this command dumps one checkpoint file every 20 step.
+* [report](./reports/LAMMPS/in.flow.pois/restart_with_mpiio_4x4.html)
+* No conflicts.
+
 
 ### QMCPACK 3.8.0
 
