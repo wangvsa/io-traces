@@ -371,5 +371,5 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 * MPI: 64 MPI Processes - 8 nodes and 8 MPI ranks per node
 * Filesystem: Lustre, stripe size: 4MB, stripe count: 8
 * Compiler & Libraries: intel/19.1.0, impi/2018.0, hdf5 1.12.0
-* Configuration: [inputs](./reports/Chombo/AMRPoisson/AMRPoisson_3d_8x8_S4M_c8.inputs.txt
+* Configuration: [inputs](./reports/Chombo/AMRPoisson/AMRPoisson_3d_8x8_S4M_c8.inputs.txt)
 
