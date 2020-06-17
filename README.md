@@ -345,7 +345,7 @@ Problem Size: 320 x 320 with 8,192,000 atoms
 
 ### GAMESS
 
-#### [dft-etoh](./reports/GAMESS/dft_etoh_4x4.hthml)
+#### [dft-etoh](./reports/GAMESS/dft_etoh_4x4.html)
 
 * System: Quartz at LLNL
 * MPI: 16 MPI Processes - 4 nodes and 4 MPI ranks per node
